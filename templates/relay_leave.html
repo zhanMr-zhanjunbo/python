@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="leave-area" id="test">
+    <div class="consultMain">
+        <h1>回复留言</h1>
+        <div class="newsMsgList_con">
+            <ul class="newsMsgList_zzy">
+                <!-- ngRepeat: msg in consultList -->
+            </ul>
+        </div>
+        <div class="servicePageLine clearFix" style="margin: 0px auto 0;padding:0 20px;text-align: left;">
+            <div class="turnPages" style="width: 700px;">
+                <label style="float: left">
+                    <span>精选留言</span>
+                </label>
+                <button type="button" id="relayId" style="float: right" onclick="relayLeave()">回复</button>
+            </div>
+        </div>
+        <div class="relay_content" style="margin-top: 50px; float: left;display: none" id="relayContent">
+            <label>
+                <textarea rows="8" ng-model="addParam.consult_content" class="ng-pristine ng-valid"
+                          style="width: 400px;" maxlength="200" id="areaContent"></textarea>
+                <button type="button" id="sendId" style="float: right;margin-top: 100px;margin-left: 30px;"
+                        onclick="send()">发送
+                </button>
+            </label>
+        </div>
+    </div>
+</div>
+{% endblock %}

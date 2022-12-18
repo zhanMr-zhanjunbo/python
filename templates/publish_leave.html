@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block script %}
+<script type="text/javascript" src="/static/js/publish.js"></script>
+{% endblock %}
+{% block body %}
+<div class="content-area" id="test">
+    <div class="consultMain">
+        <h1>填写信息</h1>
+        <div class="consultInput consultTitle">
+            <label>
+                <span class="red" style="color: red">*</span>标题
+                <input type="text" placeholder="请输入标题" ng-model="addParam.consult_title" class="ng-pristine ng-valid"
+                       maxlength="30" style="width: 400px;" id="title">
+            </label>
+        </div>
+        <div class="consultInput consultContent">
+            <label>
+                <span class="red" style="color: red">*</span>内容
+                <textarea rows="8" ng-model="addParam.consult_content" class="ng-pristine ng-valid"
+                          style="width: 400px;" maxlength="200" id="contentArea"></textarea>
+            </label>
+        </div>
+        <div class="consultInput consultPublic">
+            <label style="width: 500px;">
+                是否公开<span class="red" style="color: red">*</span>
+                <input type="radio" name="public" checked="checked" value="yes"/>是
+                <input type="radio" name="public" value="no"/>否
+            </label>
+        </div>
+        <div class="consultInput consultSubmit">
+            <button type="button" class="submit" style="width: 100px;margin-right: 60px;" onclick="consultSubmit()">提
+                交
+            </button>
+            <button type="button" class="submit" onclick="reset()" style="width: 100px;">重 置</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

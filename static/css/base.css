@@ -1,0 +1,120 @@
+a {
+	text-decoration: none;
+}
+h1 {
+  	text-align: center;
+	color: red
+}
+body {
+  background-color: lightblue;
+}
+#guanzi-expound-method-head .head-main {
+	width: 1585px;
+	height: 106px;
+	background-color: white;
+}
+#guanzi-expound-method-head .head-main .head-logo {
+	float: left;
+    width: 200px;
+    height: 40px;
+}
+#guanzi-expound-method-head .head-main .head-area {
+    width: 1000px;
+}
+#guanzi-expound-method-head .head-main .head-nav {
+    display: block;
+    float: left;
+	margin-left: 100px;
+	margin-top: 40px;
+	width: 700px;
+}
+#guanzi-expound-method-head .head-main .head-nav .column{
+    display: block;
+    float: left;
+	margin-left: 60px;
+	margin-top: 10px;
+	width: 500px;
+}
+#guanzi-expound-method-head .head-main .head-nav .consult{
+    display: block;
+    float: left;
+	margin-top: 10px;
+	width: 100px;
+}
+#guanzi-expound-method-head .head-main .head-nav .nav-item-home {
+	margin-right: 30px;
+}
+#guanzi-expound-method-head .head-main .head-nav .nav-item-contract-law {
+	margin-right: 30px;
+}
+#guanzi-expound-method-head .head-main .head-nav .nav-item-labor-law {
+	margin-right: 30px;
+}
+#guanzi-expound-method-head .head-main .head-nav .nav-item-traffic-safety-law {
+	margin-right: 30px;
+}
+#guanzi-expound-method-head .head-main .head-nav .nav-item-marriage-law {
+	margin-right: 30px;
+}
+#guanzi-expound-method-head .head-main .head-nav .nav-item-succession-law {
+	margin-right: 0px;
+}
+.content-area{
+	border:1px solid white;
+	background-color: white;
+	width:700px;
+	height:554px;
+	text-align:center;
+	line-height:40px;
+	margin-top: 37px;
+	margin-left: 450px;
+	opacity: 0.8;
+}
+.loginInput {
+    margin-top: 28px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.registerInput {
+    margin-top: 28px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.consultInput {
+    margin-top: 28px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.leave-area{
+	border:1px solid white;
+	background-color: white;
+	width:750px;
+	height:554px;
+	text-align:center;
+	line-height:40px;
+	margin-top: 37px;
+	margin-left: 450px;
+	opacity: 0.8;
+}
+.newsMsgList_zzy {
+    padding: 22px 10px;
+    box-sizing: border-box;
+    border-bottom: 1px dashed #eeeeee;
+}
+/*
+ul {
+    list-style: none;
+	display: flex;
+    flex-flow: row nowrap;
+	margin-left: 100px;
+}
+ul li {
+	list-style: none;
+    line-height: 30px;
+    padding: 1px;
+    height: 20px;
+    width: 130px;
+	margin-top: 25px;
+	margin-left: 22px;
+}
+*/

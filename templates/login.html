@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block script %}
+<script type="text/javascript" src="/static/js/login.js"></script>
+{% endblock %}
+{% block body %}
+<div class="content-area" id="test">
+    <div class="loginMain">
+        <h1>用户登录</h1>
+        <div class="loginInput loginUser">
+            <label>
+                <span>用户名</span>
+                <input type="text" onblur="accountsCheck()" id="publicLoginId" class="loginIpt ico1"
+                       placeholder="请输入用户名/手机号" autocomplete="off" maxlength="20">
+            </label>
+        </div>
+        <div class="loginInput loginKey">
+            <label>
+                <span>密&nbsp;&nbsp;码</span>
+                <input type="password" onblur="passwordCheck()" id="publicPassword" class="loginIpt ico2"
+                       placeholder="请输入密码" autocomplete="off" maxlength="16">
+            </label>
+        </div>
+        <div class="loginInput login">
+            <button type="button" class="submit" style="width: 100px;margin-right: 20px;" onclick="login()">登 录</button>
+            <button type="button" class="submit" style="width: 100px;" onclick="jumpToRegister()">注 册</button>
+        </div>
+        <div><p class="forgot-pass"><a href="javascript:jumpToForget()">忘记密码？</a></p></div>
+    </div>
+</div>
+{% endblock %}

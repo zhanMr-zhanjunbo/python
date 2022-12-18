@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block script %}
+<script type="text/javascript" src="/static/js/modify.js"></script>
+{% endblock %}
+{% block body %}
+<div class="content-area" id="test">
+    <div class="registerMain">
+        <h1>修改密码</h1>
+        <div class="registerInput modifyTelephone">
+            <label>
+                <span class="red" style="color: red">*</span>手机号码
+                <input type="text" id="telephone" class="registInput" placeholder="请输入手机号码" maxlength="11"
+                       onblur="modifyTelephone();" autocomplete="off" style="width: 350px;">
+            </label>
+        </div>
+        <div class="registerInput modifyKey">
+            <label>
+                <span class="red" style="color: red">*</span>设置密码
+                <input type="password" id="password" class="registInput" placeholder="请输入新密码（包含字母，数字，特殊符号，且不少于8位）"
+                       onblur="modifyPassword();" maxlength="16" autocomplete="off" style="width: 350px;">
+            </label>
+        </div>
+        <div class="registerInput modifyConfirmKey">
+            <label>
+                <span class="red" style="color: red">*</span>确认密码
+                <input type="password" id="password1" class="registInput" placeholder="请确认新密码（包含字母，数字，特殊符号，且不少于8位）"
+                       onblur="modifyNewPassword();" maxlength="16" autocomplete="off" style="width: 350px;">
+            </label>
+        </div>
+        <div class="registerInput modify">
+            <button type="button" class="submit" style="width: 100px;" onclick="modifyCommit()">提 交</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

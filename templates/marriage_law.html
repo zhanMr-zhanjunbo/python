@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block body %}
+<div style="width:700px;float:left;height:570px;">
+    <div><h1 style="float: left;width: 200px;height: 30px;">民法典婚姻法</h1></div>
+    <div style="float: left;">
+        <td>结婚需要满足的条件是什么</td>
+        <br>
+        <td>1、当事人具有完全民事行为能力；</td>
+        <br>
+        <td>2、男的结婚年龄不得早于二十二周岁，女的不得早于二十周岁；</td>
+        <br>
+        <td>3、男女双方结婚必须完全自愿；</td>
+        <br>
+        <td>4、符合一夫一妻制的基本原则。</td>
+        <br>
+        <td>一、界定了亲属、近亲属、家庭成员的范围</td>
+        <br>
+        <td>二、减少无效婚姻情形</td>
+        <br>
+        <td>&nbsp;&nbsp;一方患有重大疾病的，应当在结婚登记前如实告知另一方；不如实告知的，另一方可以向人民法院请求撤销婚姻。</td>
+        <br>
+        <td>三、婚姻无效或者被撤销的，无过错方有权请求损害赔</td>
+        <br>
+        <td>四、明确了夫妻共同债务的范围</td>
+        <br>
+        <td>&nbsp;&nbsp;夫妻双方共同签名或者夫妻一方事后追认等共同意思表示所负的债务，以及夫妻一方在婚姻关系存续期间以个人名义为家庭日常生活需要所负的债务，属于夫妻共同债务。</td>
+        <br>
+        <td>&nbsp;&nbsp;夫妻一方在婚姻关系存续期间以个人名义超出家庭日常生活需要所负的债务，不属于夫妻共同债务；但是，债权人能够证明该债务用于夫妻共同生活、共同生产经营或者基于夫妻双方共同意思表示的除外。</td>
+        <br>
+        <td>五、婚内可以分割夫妻共同财产。</td>
+        <br>
+        <td>六、规范亲子关系确认和否认之诉</td>
+        <br>
+        <td>七、增加离婚冷静期制度</td>
+        <br>
+        <td>&nbsp;&nbsp;自婚姻登记机关收到离婚登记申请之日起三十日内，任何一方不愿意离婚的，可以向婚姻登记机关撤回离婚登记申请。</td>
+        <br>
+        <td>&nbsp;&nbsp;前款规定期限届满后三十日内，双方需要在30日内共同到婚姻登记机关申请离婚证，如果错过时间，就认定为撤回离婚登记申请。</td>
+        <br>
+        <td>八、增加准予离婚的情形</td>
+        <br>
+        <td>九、明确离婚后子女抚养权的归属</td>
+        <br>
+        <td>十、增加离婚损害赔偿的适用情形</td>
+        <br>
+    </div>
+</div>
+<div style="border-left:1px solid #ADD8E6;float:left;height: 10px;"></div>
+<div style="width:760px;float:left;height:600px;">
+    <div><h1 style="float: left;width: 160px;height: 30px;margin-right: 650px">婚姻法案例</h1></div>
+    <div style="float: left;font-weight: 700;">
+        {% for law in results %}
+        {% for msg in law[1:4] %}
+        <ul>
+            {% if '.html' in msg %}
+            <p style="margin-right:3px;font-size:13.5px"><a href="{{ msg }}" target="_blank">{{ msg }}</a></p>
+            {% else %}
+            <td>{{ msg | safe }}</td>
+            <br>
+            {% endif %}
+        </ul>
+        {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

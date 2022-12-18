@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管子明法网</title>
+    <link rel="stylesheet" href="/static/css/base.css" type="text/css">
+    <script src="/static/js/jquery.js"></script>
+    {% block script %}{% endblock %}
+    <style>
+		ul {
+    		list-style: none;
+			display: flex;
+    		flex-flow: row nowrap;
+		}
+		ul li {
+			list-style: none;
+    		line-height: 30px;
+    		height: 25px;
+    		width: 69px;
+			margin-left: 22px;
+			background: #808080;
+		}
+
+
+    </style>
+    <script type="text/javascript">
+		function showUl(){
+			document.getElementById("sub_08").style.display = 'block';
+		}
+		function hiddenUl(){
+			document.getElementById("sub_08").style.display = 'none';
+		}
+
+
+    </script>
+</head>
+<body>
+<div>
+    <div id="guanzi-expound-method-first-column">
+        <h1 id="station" style="text-align: center;color: red">阳为德，阴为刑，刑主杀而德主生--董仲舒</h1>
+    </div>
+    <div id="guanzi-expound-method-head">
+        <div class="head-line">
+            <Hr/>
+        </div>
+        <div class="head-main">
+            <div>
+                <a href="" target="_self">
+                    <h1 class="head-logo">管子明法网</h1>
+                </a>
+            </div>
+            <div class="head-area">
+                <div class="head-nav" style="display: block">
+                    <div class="column">
+                        <a href="{{ url_for('get_home') }}" class="nav-item-home">首页</a>
+                        <a href="{{ url_for('get_contract_law') }}" class="nav-item-contract-law" target="_self">合同法</a>
+                        <a href="{{ url_for('get_labor_law') }}" class="nav-item-labor-law">劳动法</a>
+                        <a href="{{ url_for('get_traffic_safety_law') }}" class="nav-item-traffic-safety-law">交通安全法</a>
+                        <a href="{{ url_for('get_marriage_law') }}" class="nav-item-marriage-law">婚姻法</a>
+                        <a href="{{ url_for('get_succession_law') }}" class="nav-item-succession-law">继承法</a>
+                    </div>
+                    <div class="consult" onmouseover="showUl()" onmouseleave="hiddenUl()">
+                        <a href="{{ url_for('get_home') }}" class="nav-item-interact">互动交流</a>
+                        <ul id="sub_08" class="sub" style="display: none;margin-left: -60px; margin-top: 0px;">
+                            <li><a href="{{ url_for('publish_leave') }}" target="_self">发布留言</a></li>
+                            <li><a href="{{ url_for('my_leave') }}" target="_self">我的留言</a></li>
+                            <li><a href="{{ url_for('public_leave') }}" target="_self">公开留言</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block body %}{% endblock %}
+</div>
+</body>
+</html>

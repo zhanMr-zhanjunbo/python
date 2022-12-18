@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block body %}
+<div style="width:700px;float:left;height:500px;">
+    <div><h1 style="float: left;width: 230px;height: 30px;">合同法基础知识</h1></div>
+    <div style="float: left;">
+        <td>(一)合同订立中应注意的法律问题</td>
+        <br>
+        <td>1.合同的概念：合同是指平等的自然人、法人、其他组织之间设立、变更、终止民事权利义务关系的协议。</td>
+        <br>
+        <td>2.合同订立的程序</td>
+        <br>
+        <td>&nbsp;&nbsp;合同订立一般都有要约和承诺两个阶段构成。讲明要约和承诺的概念。举例说明合同订立中的法律问题。如要约未经承诺，能否成立合同？招标合同是否为要约？要约和要约邀请的区别？</td>
+        <br>
+        <td>&nbsp;&nbsp;要约是指订约一方以订立合同为目的，向对方所作出的意思表示。</td>
+        <br>
+        <td>&nbsp;&nbsp;承诺是指受要约人向要约人作出的同意按要约的内容订立合同的意思表示。</td>
+        <br>
+        <td>&nbsp;&nbsp;要约邀请是指一方向对方发出的希望其向自己提出要约的一种意思表示。</td>
+        <td>3.缔约责任的构成要件、方式缔约过失责任是批缔约一方当事人因违反诚实信用原则所应承担的先合同义务，而造成对方信赖利益的损失时所应承担的民事赔偿责任。</td>
+        <br>
+        <td>要件有：</td>
+        <br>
+        <td>（1）缔约人一方有违反先合同义务的行为；</td>
+        <br>
+        <td>（2）违反先合同义务的行为给对方造成了信赖利益的损失；</td>
+        <br>
+        <td>（3）违反先合同义务的一方在主观上必须存在过错；</td>
+        <br>
+        <td>（4）缔约人一方违反先合同义务的行为与对方所受到的损失之间须存在因果关系。</td>
+        <br>
+        <td>方式有：</td>
+        <br>
+        <td>（1）假借订立合同，恶意进行磋商；</td>
+        <br>
+        <td>（2）故意隐瞒与订立合同有关的重要事实或者提供虚假情况；</td>
+        <br>
+        <td>（3）有其他违背诚实信用原则的行为。</td>
+        <br>
+    </div>
+</div>
+<div style="border-left:6px solid #ADD8E6;float:left;height: 10px;"></div>
+<div style="border-left:1px solid #ADD8E6;float:left;height: 10px;"></div>
+<div style="width:760px;float:left;height:600px;">
+    <div><h1 style="float: left;width: 160px;height: 30px;margin-right: 650px">合同法案例</h1></div>
+    <div style="float: left;font-weight: 700;">
+        {% for law in results %}
+        {% for msg in law[1:4] %}
+        <ul>
+            {% if '.html' in msg %}
+            <p style="margin-right:3px;font-size:13.5px"><a href="{{ msg }}" target="_blank">{{ msg }}</a></p>
+            {% else %}
+            <td>{{ msg | safe }}</td>
+            <br>
+            {% endif %}
+        </ul>
+        {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

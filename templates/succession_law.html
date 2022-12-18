@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block body %}
+<div style="width:700px;float:left;height:570px;">
+    <div><h1 style="float: left;width: 200px;height: 30px;">遗产继承法</h1></div>
+    <div style="float: left;">
+        <td>民法典规定，享有继承权的包括配偶、子女、父母、兄弟姐妹、祖父母、外祖父母等。其中子女，包括婚生子女、非婚生子女、养子女和有扶养关系的继子女。</td>
+        <br>
+        <td>1、继承排序是指被继承人死亡后，依法继承其财产的人的排序。</td>
+        <br>
+        <td>&nbsp;&nbsp;排名第一第二：当事人的子女，当事人的父母。</td>
+        <br>
+        <td>&nbsp;&nbsp;下一批排名：当事人的亲生兄弟姐妹、祖父母、外祖父母。</td>
+        <br>
+        <td>2、法定继承程序启动后，第一批继承人先继承，第二批继承人不能参加。如果没有第一批二级继承人，二级继承人可以参加。</td>
+        <br>
+        <td>&nbsp;&nbsp;《继承法》第12条具体规定：如果丈夫已经去世或者妻子去世，父母做出了最重要的育儿行为，也将被视为第一继承人，享有与其他法定继承人同等的分配权利。在继承部分，如果死者生前遗嘱中对继承人和继承顺序有相关规定，则按照遗嘱的规定继承遗嘱。</td>
+        <br>
+        <td>（一）扩大遗产范围</td>
+        <br>
+        <td>&nbsp;&nbsp;《民法典》规定，遗产是自然人死亡时遗留的个人所有合法财产。只要是自然人合法取得的财产，都属于遗产，都可以被继承，包括网络财产、虚拟货币等。</td>
+        <br>
+        <td>（二）增加遗嘱继承形式</td>
+        <br>
+        <td>&nbsp;&nbsp;《继承法》规定了七种遗嘱方式：公证遗嘱、自书遗嘱、代书遗嘱、录音遗嘱、口头遗嘱、录像遗嘱和打印遗嘱。</td>
+        <br>
+        <td>（三）新增遗嘱“见证人”规定</td>
+        <br>
+        <td>（四）新增遗嘱“宽恕”制度</td>
+        <br>
+        <td>（五）“遗嘱最新第一”原则</td>
+        <br>
+        <td>（六）扩大有效继承人范围</td>
+        <br>
+        <td>提示：以下4种财产不能被继承</td>
+        <br>
+        <td>1.被继承人与他人共有的财产中，属于他人的部分不能被继承。</td>
+        <br>
+        <td>2.有些权利不能被继承，比如人身权、知识产权。</td>
+        <br>
+        <td>3.死亡赔偿金、抚恤金不能被继承。</td>
+        <br>
+        <td>4.保险金一般不能被继承。</td>
+        <br>
+    </div>
+</div>
+<div style="border-left:1px solid #ADD8E6;float:left;height: 10px;"></div>
+<div style="width:760px;float:left;height:600px;">
+    <div><h1 style="float: left;width: 240px;height: 30px;margin-right: 650px">遗产继承法案例</h1></div>
+    <div style="float: left;font-weight: 700;">
+        {% for law in results %}
+        {% for msg in law[1:4] %}
+        <ul>
+            {% if '.html' in msg %}
+            <p style="margin-right:3px;font-size:13.5px"><a href="{{ msg }}" target="_blank">{{ msg }}</a></p>
+            {% else %}
+            <p>{{ msg | safe }}</p>
+            {% endif %}
+        </ul>
+        {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
