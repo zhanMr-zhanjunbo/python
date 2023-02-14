@@ -2,7 +2,7 @@
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, url_for
 import dao as DB
 import json, os
 from flask_apscheduler import APScheduler
@@ -158,7 +158,8 @@ def my_leave():
         if (title != "") & ("NaN" not in start_date) & ("NaN" not in end_date):
             account = session.get("user")
             id = DB.find_user_id(ip=ipaddr, usr=user, pwd=password, account=account)
-            results = DB.search_one_title(ip=ipaddr, usr=user, pwd=password, id=id, title=title, start=start_date, end=end_date)
+            results = DB.search_one_title(ip=ipaddr, usr=user, pwd=password, id=id, title=title, start=start_date,
+                                          end=end_date)
             print(results)
             res_list = []
             for result in results:
@@ -169,7 +170,7 @@ def my_leave():
             account = session.get("user")
             id = DB.find_user_id(ip=ipaddr, usr=user, pwd=password, account=account)
             results = DB.search_title(ip=ipaddr, usr=user, pwd=password, id=id, title=title, start=start_date,
-                                          end=end_date)
+                                      end=end_date)
             print(results)
             res_list = []
             for result in results:
@@ -199,6 +200,7 @@ def publish_leave():
 
 
 @app.route("/public_leave")
+@wrapper
 def public_leave():
     results = DB.find_public_title(ip=ipaddr, usr=user, pwd=password)
     res_list = []
@@ -207,9 +209,46 @@ def public_leave():
     return render_template("public_leave.html", results=res_list)
 
 
-@app.route("/relay_leave")
-def relay_leave():
-    return render_template("relay_leave.html")
+@app.route("/relay_leave/<title>", methods=['GET', 'POST'])
+def relay_leave(title):
+    if request.method == 'GET':
+        print(title)
+        results = DB.search_title_content(ip=ipaddr, usr=user, pwd=password, title=title)
+        content = DB.find_relay(ip=ipaddr, usr=user, pwd=password, title=title)
+        print(content)
+        relay = {}
+        relay_list = []
+        for res in results:
+            relay["title"] = res[0]
+            relay["content"] = res[1]
+        for cnt in content:
+            relay_list.append(cnt[0])
+        relay["relay_msg"] = relay_list
+        print(relay)
+        return render_template("relay_leave.html", temp=relay)
+    else:
+        data = json.loads(request.data)
+        content = data.get("content")
+        DB.insert_relay(ip=ipaddr, usr=user, pwd=password, title=title, content=content)
+        return "ok"
+
+
+@app.route("/relay_leave_detail/<title>")
+def relay_leave_detail(title):
+    print(title)
+    results = DB.search_title_content(ip=ipaddr, usr=user, pwd=password, title=title)
+    content = DB.find_relay(ip=ipaddr, usr=user, pwd=password, title=title)
+    print(content)
+    relay = {}
+    relay_list = []
+    for res in results:
+        relay["title"] = res[0]
+        relay["content"] = res[1]
+    for cnt in content:
+        relay_list.append(cnt[0])
+    relay["relay_msg"] = relay_list
+    print(relay)
+    return render_template("my_leave_detail.html", temp=relay)
 
 
 # Press the green button in the gutter to run the script.

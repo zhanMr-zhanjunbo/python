@@ -47,11 +47,85 @@ def create_database(ip='localhost', usr='root', pwd='microsys'):
                     );       
         '''
         cursor.execute(sql_consult)
+        sql_relay = '''create table if not exists relay(
+                    id int not null primary key auto_increment,
+                    content varchar(200),
+                    topic_id int,
+                    crate_time timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    foreign key(topic_id) references communication(id) 
+                    on update cascade #同步更新
+                    on delete cascade #同步删除
+                    ); 
+        '''
+        cursor.execute(sql_relay)
         print("create table success!")
         cursor.close()
         db.close()  # 关闭数据库的连接
     except:
         print('something wrong!')
+
+
+def find_relay(ip='localhost', usr='root', pwd='microsys', title="民事诉讼与刑事诉讼的区别是什么？"):
+    try:
+        db = pymysql.connect(host=ip, user=usr, passwd=pwd, port=3306, charset='utf8', database='lawInfo')
+        cursor = db.cursor()  # 创建游标对象
+        print("connect is success!")
+        sql_id = "select id from communication where title='%s';" % title
+        cursor.execute(sql_id)
+        id = cursor.fetchone()[0]
+        sql_db = f'''
+                SELECT content FROM relay WHERE topic_id='{id}';
+        '''
+        print(sql_db)
+        cursor.execute(sql_db)
+        results = cursor.fetchall()
+        cursor.close()
+        db.close()  # 关闭数据库的连接
+        return results
+    except:
+        print("错误：没有查找到数据")
+
+
+def insert_relay(ip='localhost', usr='root', pwd='microsys', title="民事诉讼与刑事诉讼的区别是什么？",
+                 content="刑事诉讼和民事诉讼的区别为提起诉讼的主体不同；举证的责任不同；适用的法律不同；案件性质的不同；是否使用调解不同"):
+    try:
+        db = pymysql.connect(host=ip, user=usr, passwd=pwd, port=3306, charset='utf8', database='lawInfo')
+        cursor = db.cursor()  # 创建游标对象
+        print("connect is success!")
+        sql_id = "select id from communication where title='%s';" % title
+        cursor.execute(sql_id)
+        id = cursor.fetchone()[0]
+        sql_db = '''
+                INSERT IGNORE INTO relay(content, topic_id) VALUES('%s', '%s') 
+                ON DUPLICATE KEY UPDATE content=VALUES(content);
+        ''' % (content, id)
+        print(sql_db)
+        cursor.execute(sql_db)
+        db.commit()
+        print("insert into success!")
+        cursor.close()
+        db.close()  # 关闭数据库的连接
+    except:
+        db.rollback()
+
+
+def search_title_content(ip='localhost', usr='root', pwd='microsys', title="title"):
+    try:
+        db = pymysql.connect(host=ip, user=usr, passwd=pwd, port=3306, charset='utf8', database='lawInfo')
+        cursor = db.cursor()  # 创建游标对象
+        print("connect is success!")
+        print(title)
+        sql_db = f'''
+                SELECT title,content FROM communication WHERE title='{title}';
+        '''
+        print(sql_db)
+        cursor.execute(sql_db)
+        results = cursor.fetchall()
+        cursor.close()
+        db.close()  # 关闭数据库的连接
+        return results
+    except:
+        print("错误：没有查找到数据")
 
 
 def search_title(ip='localhost', usr='root', pwd='microsys', id="1", title="title", start="2022-12-16 20",

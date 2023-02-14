@@ -25,11 +25,11 @@
             <!-- ngRepeat: msg in consultList -->
             {% for i in range(0, results| length)%}
             {% if i<8 %}
-            <a href=""
+            <a href="{{ url_for('relay_leave_detail', title=results[i][0]) }}"
                style="display:inline-block;width: 700px;clear:left" class="titles">{{
                 results[i][0] }}</a>
             {% else %}
-                <a href=""
+                <a href="{{ url_for('relay_leave_detail', title=results[i][0]) }}"
                style="display:inline-block;width: 700px;clear:left;display: none" class="titles">{{
                 results[i][0] }}</a>
             {% endif %}
